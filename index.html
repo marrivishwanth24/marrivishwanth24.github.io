@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishwanth Marri — Full-Stack AI Engineer</title>
+<meta name="description" content="Full-stack AI engineer specializing in LLM systems, RAG pipelines, and agentic workflows. MS CS, University of Cincinnati. Software Engineer at Salesforce, based in Dallas, TX.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080E;--bg2:#0D0D16;--bg3:#12121C;--card:#141420;--card-hover:#1A1A28;
+  --cyan:#00D4FF;--cyan2:#00AACC;--violet:#8B5CF6;--green:#22D3A0;
+  --text:#F0F0FF;--text2:#B0B0CC;--muted:#5A5A7A;
+  --border:rgba(0,212,255,0.12);--border2:rgba(255,255,255,0.06);
+  --cyan-glow:rgba(0,212,255,0.06);
+  --mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif;--body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cyan2);border-radius:2px}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 64px;backdrop-filter:blur(24px);background:rgba(8,8,14,0.85);border-bottom:1px solid var(--border2);transition:all 0.3s}
+.nav-logo{font-family:var(--mono);font-size:13px;color:var(--cyan);letter-spacing:0.1em}
+.nav-logo span{color:var(--muted)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transition:transform 0.2s}
+.nav-links a:hover{color:var(--cyan)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.nav-status{font-family:var(--mono);font-size:11px;color:var(--green);display:flex;align-items:center;gap:6px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,211,160,0.4)}50%{opacity:0.6;box-shadow:0 0 0 6px rgba(34,211,160,0)}}
+.nav-hire{font-family:var(--mono);font-size:11px;color:#000;background:var(--cyan);padding:8px 20px;border-radius:3px;text-decoration:none;letter-spacing:0.08em;font-weight:500;transition:all 0.2s}
+.nav-hire:hover{background:var(--cyan2);transform:translateY(-1px)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 64px 80px;position:relative;z-index:1}
+.hero-orb1{position:absolute;top:15%;right:8%;width:700px;height:700px;background:radial-gradient(circle,rgba(0,212,255,0.05) 0%,transparent 65%);pointer-events:none;animation:float1 8s ease-in-out infinite}
+.hero-orb2{position:absolute;bottom:10%;left:-5%;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,0.05) 0%,transparent 65%);pointer-events:none;animation:float2 10s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(20px)}}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:28px;padding:8px 16px;border:1px solid var(--border);border-radius:100px;background:var(--cyan-glow)}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+h1.hero-name{font-family:var(--display);font-size:clamp(56px,9vw,104px);font-weight:700;line-height:0.95;letter-spacing:-0.04em;margin-bottom:20px}
+h1.hero-name .first{display:block;color:var(--text)}
+h1.hero-name .last{display:block;color:var(--cyan);text-shadow:0 0 80px rgba(0,212,255,0.3)}
+.hero-typed-wrap{font-family:var(--display);font-size:clamp(18px,2.5vw,28px);font-weight:300;color:var(--muted);margin-bottom:28px;min-height:40px;display:flex;align-items:center}
+#typed{color:var(--text2)}
+.cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:3px;animation:blink 1s step-end infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:0}}
+.hero-desc{font-size:17px;color:var(--text2);max-width:580px;margin-bottom:44px;line-height:1.85}
+.hero-desc strong{color:var(--text)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px}
+.btn-primary{font-family:var(--mono);font-size:12px;padding:14px 30px;background:var(--cyan);color:#000;text-decoration:none;border-radius:3px;font-weight:600;letter-spacing:0.08em;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--cyan2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,212,255,0.2)}
+.btn-outline{font-family:var(--mono);font-size:12px;padding:14px 28px;border:1px solid var(--border);color:var(--text2);text-decoration:none;border-radius:3px;letter-spacing:0.08em;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-glow)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border:1px solid var(--border2);border-radius:6px;overflow:hidden;max-width:640px}
+.stat{background:var(--card);padding:24px 28px;transition:background 0.2s}
+.stat:hover{background:var(--card-hover)}
+.stat-num{font-family:var(--display);font-size:32px;font-weight:700;color:var(--cyan);line-height:1;margin-bottom:6px}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;line-height:1.4}
+
+section{padding:100px 64px;position:relative;z-index:1}
+.section-eyebrow{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.section-eyebrow::before{content:'';width:28px;height:1px;background:var(--cyan)}
+.section-h{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-0.025em;line-height:1.1;margin-bottom:60px}
+.section-h .accent{color:var(--cyan)}
+
+#experience{background:var(--bg)}
+.exp-list{display:flex;flex-direction:column}
+.exp-card{display:grid;grid-template-columns:220px 1fr;gap:48px;padding:52px 0;border-top:1px solid var(--border2);transition:all 0.3s;position:relative}
+.exp-card:last-child{border-bottom:1px solid var(--border2)}
+.exp-card::before{content:'';position:absolute;left:-64px;top:0;bottom:0;width:2px;background:transparent;transition:background 0.3s}
+.exp-card:hover::before{background:var(--cyan)}
+.exp-period{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;margin-bottom:10px;text-transform:uppercase}
+.exp-co{font-family:var(--display);font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px}
+.exp-loc{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.05em}
+.exp-type{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:9px;padding:3px 10px;border:1px solid var(--border);border-radius:100px;color:var(--muted);letter-spacing:0.08em}
+.exp-title{font-family:var(--display);font-size:22px;font-weight:600;margin-bottom:22px;color:var(--text)}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:28px}
+.exp-bullets li{font-size:15px;color:var(--text2);line-height:1.75;padding-left:22px;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:11px;top:4px}
+.exp-bullets li strong{color:var(--text)}
+.tag-row{display:flex;flex-wrap:wrap;gap:7px}
+.tag{font-family:var(--mono);font-size:10px;padding:4px 11px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.15);color:var(--cyan);border-radius:3px;letter-spacing:0.04em}
+
+#projects{background:var(--bg2)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.proj-card{background:var(--card);padding:52px 48px;position:relative;overflow:hidden;transition:all 0.3s;border:1px solid transparent}
+.proj-card:hover{background:var(--card-hover);border-color:var(--border)}
+.proj-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--violet),transparent);opacity:0;transition:opacity 0.3s}
+.proj-card:hover::after{opacity:1}
+.proj-num{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.15em;margin-bottom:12px}
+.proj-type-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;color:var(--violet);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px}
+.proj-title{font-family:var(--display);font-size:22px;font-weight:600;margin-bottom:16px;line-height:1.25}
+.proj-desc{font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:24px}
+.proj-highlight{font-family:var(--mono);font-size:12px;color:var(--cyan);padding:14px 18px;background:rgba(0,212,255,0.05);border-left:2px solid var(--cyan);border-radius:0 3px 3px 0;margin-bottom:28px;line-height:1.7}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.proj-links{display:flex;gap:20px}
+.proj-link{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:0.08em;display:inline-flex;align-items:center;gap:6px;transition:color 0.2s;border-bottom:1px solid var(--border2);padding-bottom:2px}
+.proj-link:hover{color:var(--cyan);border-color:var(--cyan)}
+
+#skills{background:var(--bg)}
+.skills-wrapper{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.skill-card{background:var(--card);padding:36px;border:1px solid transparent;transition:all 0.3s}
+.skill-card:hover{background:var(--card-hover);border-color:var(--border)}
+.skill-icon{font-size:28px;margin-bottom:18px}
+.skill-title{font-family:var(--display);font-size:15px;font-weight:600;margin-bottom:18px}
+.skill-chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-family:var(--mono);font-size:10px;padding:5px 12px;border-radius:3px;letter-spacing:0.04em}
+.chip-hot{background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--cyan)}
+.chip-warm{background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);color:var(--violet)}
+.chip-cool{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
+
+#education{background:var(--bg2)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.edu-card{background:var(--card);padding:48px;border:1px solid transparent;transition:all 0.3s}
+.edu-card:hover{background:var(--card-hover);border-color:var(--border)}
+.edu-degree-type{font-family:var(--mono);font-size:10px;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:14px}
+.edu-degree{font-family:var(--display);font-size:20px;font-weight:600;margin-bottom:8px;line-height:1.3}
+.edu-school{font-family:var(--display);font-size:15px;color:var(--text2);margin-bottom:6px}
+.edu-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:20px;letter-spacing:0.05em}
+.edu-gpa{font-family:var(--display);font-size:36px;font-weight:700;color:var(--cyan);margin-bottom:4px}
+.edu-gpa-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.edu-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+
+#contact{background:var(--bg);text-align:center}
+.contact-inner{max-width:680px;margin:0 auto}
+.contact-h{font-family:var(--display);font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;margin-bottom:20px}
+.contact-h .accent{color:var(--cyan)}
+.contact-sub{font-size:16px;color:var(--text2);margin-bottom:52px;line-height:1.8}
+.contact-email{display:block;font-family:var(--mono);font-size:18px;color:var(--cyan);text-decoration:none;border:1px solid var(--border);padding:22px 48px;border-radius:4px;margin-bottom:32px;transition:all 0.3s;letter-spacing:0.04em}
+.contact-email:hover{background:var(--cyan-glow);border-color:var(--cyan);box-shadow:0 0 40px rgba(0,212,255,0.1)}
+.contact-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.contact-btn{font-family:var(--mono);font-size:12px;color:var(--text2);text-decoration:none;padding:12px 24px;border:1px solid var(--border2);border-radius:3px;transition:all 0.2s;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:8px}
+.contact-btn:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-glow)}
+.contact-resume-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:32px;letter-spacing:0.06em}
+
+footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.footer-left{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em}
+.footer-right{font-family:var(--mono);font-size:10px;color:var(--muted);display:flex;align-items:center;gap:8px}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:14px 20px}.nav-links,.nav-status{display:none}
+  .hero{padding:80px 20px 60px}
+  section{padding:80px 20px}
+  h1.hero-name{font-size:52px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .exp-card{grid-template-columns:1fr;gap:12px}
+  .proj-grid,.skills-wrapper,.edu-grid{grid-template-columns:1fr}
+  footer{padding:20px;flex-direction:column;gap:10px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">VM<span>://</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-status"><span class="pulse"></span>Software Engineer @ Salesforce</div>
+    <a href="mailto:marrivishwanth24@gmail.com" class="nav-hire">Hire Me &rarr;</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span>Software Engineer @ Salesforce &middot; Dallas, TX</div>
+  <h1 class="hero-name"><span class="first">Vishwanth</span><span class="last">Marri.</span></h1>
+  <div class="hero-typed-wrap"><span id="typed"></span><span class="cursor"></span></div>
+  <p class="hero-desc">Software engineer with <strong>3+ years of experience</strong> building scalable full-stack applications and <strong>AI-powered solutions</strong> across the SDLC. Currently building CRM automation and onboarding platforms at <strong>Salesforce</strong>. MS Computer Science, University of Cincinnati. Ships end-to-end &mdash; architecture to cloud deployment. Daily user of <strong>Claude Code</strong> and <strong>Claude API</strong>.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">View My Work &rarr;</a>
+    <a href="https://github.com/marrivishwanth24" target="_blank" rel="noopener" class="btn-outline">GitHub &#8599;</a>
+    <a href="https://linkedin.com/in/vishwanth-marri" target="_blank" rel="noopener" class="btn-outline">LinkedIn &#8599;</a>
+    <a href="https://marrivishwanth24.github.io/Vishwanth_Marri_Resume_SDE_.pdf" download class="btn-outline">Resume &#8595; PDF</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Yrs Experience</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Companies Worked</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Live Deployed Projects</div></div>
+    <div class="stat"><div class="stat-num">90%</div><div class="stat-label">Data-Sync Error Cut</div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-eyebrow">Work History</div>
+  <h2 class="section-h">Professional <span class="accent">Experience</span></h2>
+  <div class="exp-list">
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-period">JAN 2026 &mdash; PRESENT</div>
+        <div class="exp-co">Salesforce</div>
+        <div class="exp-loc">Dallas, TX</div>
+        <div class="exp-type">Full-Time</div>
+      </div>
+      <div>
+        <div class="exp-title">Software Engineer</div>
+        <ul class="exp-bullets">
+          <li>Developed scalable <strong>CRM automation and onboarding platforms</strong> using Python, RESTful APIs, and OAuth 2.0; engineered webhook workflows for bi-directional data sync, reducing sync errors by <strong>90%</strong> across enterprise systems</li>
+          <li>Automated customer onboarding and data-processing workflows by integrating <strong>Generative AI</strong> with Python and FastAPI backends, significantly improving operational efficiency</li>
+          <li>Engineered AI-enabled <strong>React/TypeScript</strong> interfaces for automated onboarding workflows using lazy loading, code splitting, and reusable UI components, reducing frontend load times by <strong>40%</strong></li>
+          <li>Implemented secure API and application access controls using <strong>JWT authentication and RBAC</strong>, protecting customer and enterprise data across backend services and user workflows</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">OAuth 2.0</span><span class="tag">JWT/RBAC</span><span class="tag">Generative AI</span><span class="tag">Webhooks</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-period">AUG 2025 &mdash; DEC 2025</div>
+        <div class="exp-co">Kontaktsource</div>
+        <div class="exp-loc">Miami, FL</div>
+        <div class="exp-type">Internship</div>
+      </div>
+      <div>
+        <div class="exp-title">Software Engineer Intern</div>
+        <ul class="exp-bullets">
+          <li>Developed internal <strong>data-validation tools</strong> using Node.js and FastAPI to validate member application data before manual review, reducing incorrect entries flagged by the operations team by <strong>~20%</strong></li>
+          <li>Engineered scalable backend APIs and enhanced <strong>React-based frontend workflows</strong> for core membership, application, and event management systems, driving greater usability and consistency</li>
+          <li>Conducted root-cause analysis and backend debugging to eliminate recurring form-submission and data-entry defects, documenting standard fixes to streamline ongoing operational support</li>
+          <li>Supported backend API integration work by writing validation scripts, testing webhook payloads, and documenting data-flow behavior, contributing to the reliability of the broader CRM automation layer</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Webhooks</span><span class="tag">API Validation</span><span class="tag">Debugging</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-period">JUN 2022 &mdash; JUL 2024</div>
+        <div class="exp-co">Virtusa</div>
+        <div class="exp-loc">Hyderabad, India</div>
+        <div class="exp-type">Full-Time</div>
+      </div>
+      <div>
+        <div class="exp-title">Full Stack Developer</div>
+        <ul class="exp-bullets">
+          <li>Enhanced a <strong>multi-tenant client operations platform</strong> using the MERN stack to centralize customer workflows, automate manual processing, and support isolated tenant-specific data and business processes</li>
+          <li>Engineered resilient <strong>Node.js and Express.js</strong> backend services, integrating external enterprise APIs with structured error handling, retries, and asynchronous processing for reliable data exchange under variable network conditions</li>
+          <li>Containerized services with <strong>Docker</strong> and automated <strong>AWS EC2</strong> deployments via GitHub Actions CI/CD pipelines, cutting release cycles by <strong>35%</strong> and standardizing workflows</li>
+          <li>Optimized <strong>PostgreSQL</strong> data-access performance through targeted indexing, query optimization, and <strong>Redis caching</strong>, reducing average API response times for high-volume workflows</li>
+          <li>Developed comprehensive unit and integration test suites across full-stack components, APIs, and data layers, achieving high code coverage and preventing critical defects prior to production deployment</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span><span class="tag">AWS EC2</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-eyebrow">Selected Work</div>
+  <h2 class="section-h">Projects <span class="accent">&amp; Builds</span></h2>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="proj-num">01 / 02</div>
+      <div class="proj-type-badge">&#9889; AI &middot; Multi-Agent &middot; RAG &middot; LLM &middot; Live</div>
+      <h3 class="proj-title">AI-Powered Document Q&amp;A System</h3>
+      <p class="proj-desc">Production RAG system for semantic search and conversational Q&amp;A over uploaded PDFs. Built end-to-end &mdash; from a document ingestion and embedding pipeline through a multi-agent retrieval orchestrator to real-time streaming answers with source citations.</p>
+      <div class="proj-highlight">&#128295; Two-stage retrieval (pgvector ANN + Voyage reranker) &middot; LangChain orchestration with MCP tool use &middot; real-time Claude API streaming via SSE &middot; diagnosed and fixed a concurrency race condition while maintaining sub-200ms retrieval latency</div>
+      <div class="proj-stack">
+        <span class="tag">Claude API</span><span class="tag">pgvector</span><span class="tag">LangChain</span><span class="tag">MCP</span><span class="tag">Voyage AI</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/marrivishwanth24/rag-agent-platform" target="_blank" rel="noopener" class="proj-link">GitHub &#8599;</a>
+        <a href="https://rag-frontend-topaz.vercel.app" target="_blank" rel="noopener" class="proj-link">Live Demo &#8599;</a>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <div class="proj-num">02 / 02</div>
+      <div class="proj-type-badge">&#128202; ML &middot; NLP &middot; Classification &middot; REST API</div>
+      <h3 class="proj-title">Product Review Sentiment Classifier</h3>
+      <p class="proj-desc">A deployed FastAPI service that classifies product reviews as positive, negative, or neutral using a TF-IDF + Logistic Regression model. Serves real-time single and batch inference over REST with per-prediction interpretability, plus a browser dashboard for batch analysis.</p>
+      <div class="proj-highlight">&#128202; 81% accuracy (3-class, 5-fold CV) &middot; fully reproducible seeded training pipeline &middot; 13-test pytest suite &middot; live on Render</div>
+      <div class="proj-stack">
+        <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">TF-IDF</span><span class="tag">FastAPI</span><span class="tag">REST</span><span class="tag">pytest</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/marrivishwanth24/sentiment-mining-pipeline" target="_blank" rel="noopener" class="proj-link">GitHub &#8599;</a>
+        <a href="https://sentiment-mining-pipeline.onrender.com" target="_blank" rel="noopener" class="proj-link">Live Demo &#8599;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-eyebrow">Toolkit</div>
+  <h2 class="section-h">Technical <span class="accent">Skills</span></h2>
+  <div class="skills-wrapper">
+    <div class="skill-card reveal">
+      <div class="skill-icon">&#129302;</div>
+      <div class="skill-title">AI &amp; Generative AI</div>
+      <div class="skill-chips">
+        <span class="chip chip-hot">Claude API</span><span class="chip chip-hot">LangChain</span><span class="chip chip-hot">LangGraph</span><span class="chip chip-hot">Model Context Protocol</span><span class="chip chip-warm">RAG</span><span class="chip chip-warm">Vector Search</span><span class="chip chip-warm">AI Agents</span><span class="chip chip-warm">Prompt Engineering</span><span class="chip chip-cool">LLM Evaluation</span><span class="chip chip-cool">Claude Code</span><span class="chip chip-cool">Cursor</span><span class="chip chip-cool">GitHub Copilot</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">&#9889;</div>
+      <div class="skill-title">Languages &amp; Frameworks</div>
+      <div class="skill-chips">
+        <span class="chip chip-hot">Python</span><span class="chip chip-hot">TypeScript</span><span class="chip chip-hot">React.js</span><span class="chip chip-hot">Next.js</span><span class="chip chip-hot">Node.js</span><span class="chip chip-warm">FastAPI</span><span class="chip chip-warm">Express.js</span><span class="chip chip-warm">JavaScript</span><span class="chip chip-cool">Java</span><span class="chip chip-cool">Tailwind CSS</span><span class="chip chip-cool">GraphQL</span><span class="chip chip-cool">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">&#9729;&#65039;</div>
+      <div class="skill-title">Cloud, Data &amp; DevOps</div>
+      <div class="skill-chips">
+        <span class="chip chip-hot">AWS (EC2,S3,RDS,Lambda)</span><span class="chip chip-hot">Docker</span><span class="chip chip-hot">Kubernetes</span><span class="chip chip-hot">GitHub Actions</span><span class="chip chip-warm">Terraform</span><span class="chip chip-warm">PostgreSQL</span><span class="chip chip-warm">MongoDB</span><span class="chip chip-warm">Redis</span><span class="chip chip-cool">Elasticsearch</span><span class="chip chip-cool">pgvector</span><span class="chip chip-cool">OAuth2/JWT</span><span class="chip chip-cool">Pytest/Jest</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-eyebrow">Academic Background</div>
+  <h2 class="section-h">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree-type">Graduate &middot; 2026</div>
+      <div class="edu-degree">Master of Engineering<br>in Computer Science</div>
+      <div class="edu-school">University of Cincinnati</div>
+      <div class="edu-meta">Cincinnati, OH &middot; Aug 2024 &mdash; May 2026</div>
+      <div class="edu-gpa">3.9<span style="font-size:20px;color:var(--muted)">/4.0</span></div>
+      <div class="edu-gpa-label">Cumulative GPA</div>
+      <div class="edu-tags"><span class="tag">AI Systems</span><span class="tag">Machine Learning</span><span class="tag">Distributed Systems</span><span class="tag">System Design</span></div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree-type">Undergraduate &middot; 2024</div>
+      <div class="edu-degree">B.Tech in Computer Science<br>&amp; Engineering</div>
+      <div class="edu-school">Keshav Memorial Institute of Technology</div>
+      <div class="edu-meta">Hyderabad, India &middot; Dec 2020 &mdash; May 2024</div>
+      <div class="edu-gpa">3.7<span style="font-size:20px;color:var(--muted)">/4.0</span></div>
+      <div class="edu-gpa-label">Cumulative GPA</div>
+      <div class="edu-tags"><span class="tag">Data Structures</span><span class="tag">Algorithms</span><span class="tag">Full-Stack Dev</span><span class="tag">Database Systems</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-eyebrow" style="justify-content:center">Get In Touch</div>
+    <h2 class="contact-h">Let's build something<br><span class="accent">great together.</span></h2>
+    <p class="contact-sub">Currently a Software Engineer at Salesforce, open to new opportunities and collaborations. Based in Dallas, TX &mdash; open to remote, hybrid, or onsite.</p>
+    <a href="mailto:marrivishwanth24@gmail.com" class="contact-email">marrivishwanth24@gmail.com</a>
+    <div class="contact-row">
+      <a href="https://github.com/marrivishwanth24" target="_blank" rel="noopener" class="contact-btn">&lt;/&gt; GitHub</a>
+      <a href="https://linkedin.com/in/vishwanth-marri" target="_blank" rel="noopener" class="contact-btn">in LinkedIn</a>
+      <a href="tel:+15133480777" class="contact-btn">&#128222; +1 513-348-0777</a>
+      <a href="https://marrivishwanth24.github.io/Vishwanth_Marri_Resume_SDE_.pdf" download class="contact-btn">&#8595; Download Resume</a>
+    </div>
+    <div class="contact-resume-note">Resume available as PDF &middot; Last updated September 2026 &middot; Dallas, Texas</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">VISHWANTH MARRI &middot; DALLAS, TX &middot; 2026</div>
+  <div class="footer-right"><span class="pulse" style="background:var(--green)"></span>Software Engineer @ Salesforce</div>
+</footer>
+
+<script>
+const phrases=['Building AI systems that ship to real users.','Claude API · RAG · pgvector · Streaming.','React · Next.js · Node.js · Python · FastAPI.','From architecture to cloud deployment.','Daily user of Claude Code & Cursor.'];
+let pi=0,ci=0,del=false;
+const el=document.getElementById('typed');
+function type(){
+  const p=phrases[pi];
+  if(!del){el.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(type,2400);return}}
+  else{el.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}
+  setTimeout(type,del?35:65);
+}
+type();
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.background=window.scrollY>50?'rgba(8,8,14,0.96)':'rgba(8,8,14,0.85)';
+});
+</script>
+</body>
+</html>
