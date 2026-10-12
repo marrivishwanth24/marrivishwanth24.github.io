@@ -190,7 +190,7 @@ footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justif
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Yrs Experience</div></div>
     <div class="stat"><div class="stat-num">3</div><div class="stat-label">Companies Worked</div></div>
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Live Deployed Projects</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Live Deployed Projects</div></div>
     <div class="stat"><div class="stat-num">90%</div><div class="stat-label">Data-Sync Error Cut</div></div>
   </div>
 </section>
@@ -268,13 +268,13 @@ footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justif
   <h2 class="section-h">Projects <span class="accent">&amp; Builds</span></h2>
   <div class="proj-grid">
     <div class="proj-card reveal">
-      <div class="proj-num">01 / 02</div>
+      <div class="proj-num">01 / 03</div>
       <div class="proj-type-badge">&#9889; AI &middot; Multi-Agent &middot; RAG &middot; LLM &middot; Live</div>
       <h3 class="proj-title">AI-Powered Document Q&amp;A System</h3>
-      <p class="proj-desc">Production RAG system for semantic search and conversational Q&amp;A over uploaded PDFs. Built end-to-end &mdash; from a document ingestion and embedding pipeline through a multi-agent retrieval orchestrator to real-time streaming answers with source citations.</p>
-      <div class="proj-highlight">&#128295; Two-stage retrieval (pgvector ANN + Voyage reranker) &middot; LangChain orchestration with MCP tool use &middot; real-time Claude API streaming via SSE &middot; diagnosed and fixed a concurrency race condition while maintaining sub-200ms retrieval latency</div>
+      <p class="proj-desc">Production RAG system for semantic search and conversational Q&amp;A over uploaded PDFs. The retrieval agent is a LangGraph state machine that grades its own results and retries with a widened search when context looks insufficient, rather than returning a weak answer outright.</p>
+      <div class="proj-highlight">&#128295; Two-stage retrieval (pgvector ANN + Voyage reranker) &middot; session-safe agentic tool calling &middot; isolated MCP server &middot; Claude-to-OpenAI fallback for provider outages &middot; validated zero cross-session data leakage under real concurrent multi-user load</div>
       <div class="proj-stack">
-        <span class="tag">Claude API</span><span class="tag">pgvector</span><span class="tag">LangChain</span><span class="tag">MCP</span><span class="tag">Voyage AI</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span>
+        <span class="tag">Claude API</span><span class="tag">pgvector</span><span class="tag">LangGraph</span><span class="tag">MCP</span><span class="tag">Voyage AI</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">TypeScript</span>
       </div>
       <div class="proj-links">
         <a href="https://github.com/marrivishwanth24/rag-agent-platform" target="_blank" rel="noopener" class="proj-link">GitHub &#8599;</a>
@@ -282,7 +282,7 @@ footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justif
       </div>
     </div>
     <div class="proj-card reveal">
-      <div class="proj-num">02 / 02</div>
+      <div class="proj-num">02 / 03</div>
       <div class="proj-type-badge">&#128202; ML &middot; NLP &middot; Classification &middot; REST API</div>
       <h3 class="proj-title">Product Review Sentiment Classifier</h3>
       <p class="proj-desc">A deployed FastAPI service that classifies product reviews as positive, negative, or neutral using a TF-IDF + Logistic Regression model. Serves real-time single and batch inference over REST with per-prediction interpretability, plus a browser dashboard for batch analysis.</p>
@@ -293,6 +293,20 @@ footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justif
       <div class="proj-links">
         <a href="https://github.com/marrivishwanth24/sentiment-mining-pipeline" target="_blank" rel="noopener" class="proj-link">GitHub &#8599;</a>
         <a href="https://sentiment-mining-pipeline.onrender.com" target="_blank" rel="noopener" class="proj-link">Live Demo &#8599;</a>
+      </div>
+    </div>
+    <div class="proj-card reveal" style="grid-column:1/-1">
+      <div class="proj-num">03 / 03</div>
+      <div class="proj-type-badge">&#128269; AI &middot; Multi-Agent &middot; Guardrails &middot; Live</div>
+      <h3 class="proj-title">Lead Enrichment &amp; Outreach Agent</h3>
+      <p class="proj-desc">A multi-step LangGraph agent that enriches company data from public sources, qualifies leads against configurable criteria, and drafts personalized outreach using Claude API structured outputs, validated against live company data.</p>
+      <div class="proj-highlight">&#128269; Independent grading guardrail verifies every drafted claim against its source before human review and fails closed on verification errors instead of auto-approving unverified output &middot; covered by integration tests including concurrent multi-session runs</div>
+      <div class="proj-stack">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangGraph</span><span class="tag">Claude API</span><span class="tag">Structured Outputs</span><span class="tag">pytest</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/marrivishwanth24/lead-enrichment-agent" target="_blank" rel="noopener" class="proj-link">GitHub &#8599;</a>
+        <a href="https://lead-enrichment-agent-production-7443.up.railway.app" target="_blank" rel="noopener" class="proj-link">Live Demo &#8599;</a>
       </div>
     </div>
   </div>
@@ -313,7 +327,7 @@ footer{padding:28px 64px;border-top:1px solid var(--border2);display:flex;justif
       <div class="skill-icon">&#9889;</div>
       <div class="skill-title">Languages &amp; Frameworks</div>
       <div class="skill-chips">
-        <span class="chip chip-hot">Python</span><span class="chip chip-hot">TypeScript</span><span class="chip chip-hot">React.js</span><span class="chip chip-hot">Next.js</span><span class="chip chip-hot">Node.js</span><span class="chip chip-warm">FastAPI</span><span class="chip chip-warm">Express.js</span><span class="chip chip-warm">JavaScript</span><span class="chip chip-cool">Java</span><span class="chip chip-cool">Tailwind CSS</span><span class="chip chip-cool">GraphQL</span><span class="chip chip-cool">SQL</span>
+        <span class="chip chip-hot">Python</span><span class="chip chip-hot">TypeScript</span><span class="chip chip-hot">React.js</span><span class="chip chip-hot">Next.js</span><span class="chip chip-hot">Node.js</span><span class="chip chip-warm">FastAPI</span><span class="chip chip-warm">Express.js</span><span class="chip chip-warm">JavaScript</span><span class="chip chip-cool">Java</span><span class="chip chip-cool">Tailwind CSS</span><span class="chip chip-cool">SQL</span>
       </div>
     </div>
     <div class="skill-card reveal">
